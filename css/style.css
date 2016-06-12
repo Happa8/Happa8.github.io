@@ -4,12 +4,12 @@ body {
   margin: 0;
   background-color: #fefffe;
 }
-.notification {
-  margin-top: 100px;
-  text-align: center;
-  background-color: #d1ffeb;
-  box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
+header {
+  height: 50px;
+  width: 100%;
+}
+.backimg img {
+  width: 100%;
 }
 h1 {
   font-size: 50px;
