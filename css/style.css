@@ -3,13 +3,15 @@ html,
 body {
   margin: 0;
   background-color: #fefffe;
+  background: url(../img/jumbotron2.jpg);
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "メイリオ,Meiryo,游ゴシック体,'Yu Gothic',YuGothic,'ヒラギノ角ゴシック Pro','Hiragino Kaku Gothic Pro',Osaka,'ＭＳ Ｐゴシック','MS PGothic',sans-serif";
 }
-.notification {
-  margin-top: 100px;
-  text-align: center;
-  background-color: #d1ffeb;
-  box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
+header {
+  height: 50px;
+  width: 100%;
 }
 h1 {
   font-size: 50px;
@@ -19,4 +21,108 @@ h1 {
 h2 {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
+}
+.font-Raleway-200 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+}
+.font-Raleway-400 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+.shadow-under {
+  box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.2);
+}
+header .jumbotron {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+  color: #2c2c2c;
+  height: 400px;
+  margin-top: 20px;
+}
+header .jumbotron h1 {
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+  border-bottom-style: dotted;
+}
+header .jumbotron p {
+  font-size: 30px;
+  font-weight: 400;
+}
+header .jb-container {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  background-blend-mode: overlay;
+}
+.flexiblebox {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  /* 縦方向中央揃え（Safari用） */
+  align-items: center;
+  /* 縦方向中央揃え */
+  -webkit-justify-content: center;
+  /* 横方向中央揃え（Safari用） */
+  justify-content: center;
+  /* 横方向中央揃え */
+}
+.main-contents {
+  display: block;
+  margin: auto;
+  margin-top: 200px;
+  background-color: #f8f8f8;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 3px;
+  text-align: center;
+}
+.section-title {
+  border-bottom: 3px solid;
+  border-bottom-style: dotted;
+  border-bottom-width: thin;
+}
+.border-around {
+  border: 1px solid;
+}
+.navbar-top-trans {
+  background-color: rgba(255, 255, 255, 0);
+  color: #f8f8f8;
+  border-color: rgba(255, 255, 255, 0);
+}
+nav.navbar-top-trans .container * {
+  color: white;
+}
+nav.navber-top-trans .container #gnavi > ul > li > a {
+  color: white;
+}
+#gnavi ul {
+  float: right;
+}
+.license {
+  text-align: center;
+  color: #f8f8f8;
+  font-size: 16px;
+  margin: 30px auto;
+}
+.page-button {
+  margin: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid;
+  border-color: white;
+  border-radius: 3px;
+}
+.page-button h1 {
+  border-bottom: 1px solid;
+  text-align: center;
+}
+.page-button span {
+  text-align: center;
+  font-size: 80px;
+}
+.COMINGSOON {
+  width: 120%;
+  position: relative;
+  top: -300px;
+  left: -50px;
+  transform: rotate(10deg);
 }
