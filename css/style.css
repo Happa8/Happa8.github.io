@@ -8,9 +8,6 @@ header {
   height: 50px;
   width: 100%;
 }
-.backimg img {
-  width: 100%;
-}
 h1 {
   font-size: 50px;
   font-family: 'Raleway', sans-serif;
@@ -19,4 +16,61 @@ h1 {
 h2 {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
+}
+.font-Raleway-200 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+}
+.font-Raleway-400 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+.shadow-under {
+  box-shadow: 0px 15px 5px -5px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 15px 5px -5px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0px 15px 5px -5px rgba(0, 0, 0, 0.6);
+  -o-box-shadow: 0px 15px 5px -5px rgba(0, 0, 0, 0.6);
+  -ms-box-shadow: 0px 15px 5px -5px rgba(0, 0, 0, 0.6);
+}
+header .jumbotron {
+  background: url(../img/jumbotron.jpg);
+  background-position: center center;
+  background-size: cover;
+  text-align: center;
+  background-color: #e8f5e9;
+  color: #FFF;
+  height: 300px;
+}
+header .jumbotron h1 {
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+  border-bottom-style: dotted;
+}
+header .jumbotron p {
+  font-size: 30px;
+  font-weight: 400;
+}
+.flexiblebox {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  /* 縦方向中央揃え（Safari用） */
+  align-items: center;
+  /* 縦方向中央揃え */
+  -webkit-justify-content: center;
+  /* 横方向中央揃え（Safari用） */
+  justify-content: center;
+  /* 横方向中央揃え */
+}
+.main-contents {
+  display: block;
+  margin-top: 300px;
+}
+.section-title {
+  border-bottom: 3px solid;
+  border-bottom-style: dotted;
+  border-bottom-width: thin;
+}
+.border-around {
+  border: 1px solid;
 }
