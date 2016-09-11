@@ -148,6 +148,7 @@ nav.navber-top-trans .container #gnavi > ul > li > a {
   border-color: white;
   border-radius: 3px;
   padding: 15px;
+  transition: 0.5s;
 }
 .page-button > a {
   text-decoration: none;
