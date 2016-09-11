@@ -9,6 +9,11 @@ body {
     font-family: "メイリオ,Meiryo,游ゴシック体,'Yu Gothic',YuGothic,'ヒラギノ角ゴシック Pro','Hiragino Kaku Gothic Pro',Osaka,'ＭＳ Ｐゴシック','MS PGothic',sans-serif"
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
 header {
     height: 50px;
     width: 100%;
@@ -23,6 +28,17 @@ h1 {
 h2 {
     font-family: 'Raleway', sans-serif;
     font-weight: 200;
+}
+
+ul {
+    list-style-type: none;
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+li{
+    margin: 5px;
 }
 
 .font-Raleway-200 {
@@ -105,36 +121,96 @@ header .jb-container {
 .navbar-top-trans {
     background-color: rgba(255, 255, 255, 0);
     border-color: rgba(255, 255, 255, 0);
-    color: #f8f8f8;
+    color: #d0d0d0;
     border-color: rgba(255, 255, 255, 0);
 }
 
-nav.navbar-top-trans .container *{
-    color: white;
+nav {
+    transition: 0.5s;
 }
 
-nav.navber-top-trans .container #gnavi>ul>li>a{
-    color: white;
+nav .container .navbar-header a {
+    transition: 0.3s;
 }
 
-#gnavi ul{
-	 float: right;
+nav.navbar-top-trans .container * {
+    color: #d0d0d0;
+}
+
+nav.navbar-top-trans .container *:hover {
+    color: white;
+    transition: 0.3s;
+}
+
+nav.navber-top-trans .container #gnavi>ul>li>a {
+    color: #d0d0d0;
+}
+
+.navbar-default .navbar-nav > li > a:hover{
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.in {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.collapsing {
+    background-color: rgba(255, 255, 255, 0.8);
+    transition: 0.3s;
+}
+
+#gnavi ul {
+    float: right;
 }
 
 .license {
-	text-align: center;
+    text-align: center;
     color: #f8f8f8;
     font-size: 16px;
     margin: 30px auto;
 }
 
 .page-button {
-    margin: 15px;
+    margin: auto;
+}
+
+.page-button > a > .box {
+	margin: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
-	border: 1px solid;
+    border: 1px solid;
     border-color: white;
     border-radius: 3px;
+    padding: 15px;
+}
+
+.page-button > a  {
+	text-decoration: none;
+    color: black;
+}
+
+/*.page-button:nth-child(odd) {
+	float: left;
+}
+
+.page-button:nth-child(even) {
+	float: right;
+}*/
+
+.page-button > a > .box:hover {
+    text-decoration: none;
+    background-color: rgba(248, 248, 248, 0.8);
+    transition: 0.5s;
+    transform: rotate(5deg) scale(0.9);
+    span {
+        transition: 0.5s;
+        transform: scale(1.1);
+    }
+}
+
+.main-contents > .row > a{
+	text-decoration: none;
 }
 
 .page-button h1 {
@@ -143,14 +219,35 @@ nav.navber-top-trans .container #gnavi>ul>li>a{
 }
 
 .page-button span {
-	text-align: center;
+    text-align: center;
     font-size: 80px;
 }
 
+img.col-sm-12 {
+    transform: scale(0.8);
+}
+
 .COMINGSOON {
-	width: 120%;
+    width: 120%;
     position: relative;
     top: -300px;
     left: -50px;
     transform: rotate(10deg);
+}
+
+.img-mini{
+    transform: scale(0.8);
+}
+
+.section-title-sub {
+	
+}
+
+.creation-description {
+	margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn-creation {
+	margin: 5px;
 }
