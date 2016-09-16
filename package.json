@@ -1,0 +1,23 @@
+{
+  "name": "Happa8.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Happa8/Happa8.github.io.git"
+  },
+  "keywords": [],
+  "author": "Happa8",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Happa8/Happa8.github.io/issues"
+  },
+  "homepage": "https://github.com/Happa8/Happa8.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
