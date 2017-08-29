@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Happa8/Happa8.github.io/issues"
   },
-  "homepage": "https://github.com/Happa8/Happa8.github.io#readme"
+  "homepage": "https://github.com/Happa8/Happa8.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-webserver": "^0.9.1"
+  }
 }
