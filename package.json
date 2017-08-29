@@ -1,0 +1,19 @@
+{
+  "name": "happa8_official_site",
+  "version": "1.0.0",
+  "description": "Happa8's offisial web site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Happa8/Happa8.github.io.git"
+  },
+  "author": "Happa8",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Happa8/Happa8.github.io/issues"
+  },
+  "homepage": "https://github.com/Happa8/Happa8.github.io#readme"
+}
