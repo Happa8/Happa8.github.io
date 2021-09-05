@@ -10,7 +10,13 @@ export default {
 } as Meta<Props>
 
 const Template: Story = (args) => (
-	<CoverAnime w={"90vw"} h={50} maxW={200} borderRadius={"base"}>
+	<CoverAnime
+		w={"90vw"}
+		h={100}
+		maxW={200}
+		borderRadius={"base"}
+		coverOrigin="top"
+	>
 		<Button>Button</Button>
 	</CoverAnime>
 )

@@ -1,9 +1,10 @@
 import { Box, BoxProps } from "@chakra-ui/layout"
-import { motion, useAnimation } from "framer-motion"
+import { motion, Transition, useAnimation } from "framer-motion"
 import { VFC, ReactNode, useEffect, cloneElement, ReactElement } from "react"
 
 export type Props = BoxProps & {
 	children: ReactElement
+	coverOrigin?: "top" | "left"
 }
 
 const MBox = motion<BoxProps>(Box)
@@ -12,10 +13,41 @@ export const CoverAnime: VFC<Props> = (props) => {
 	const coverAnimation = useAnimation()
 	const baseVisible = useAnimation()
 
+	const coverAniDir = (timing: "start" | "end") => {
+		if (props.coverOrigin == "left") {
+			if (timing === "start") {
+				return {
+					scaleY: 1,
+					scaleX: [0, 1],
+					transformOrigin: "left",
+				}
+			} else {
+				return {
+					scaleY: 1,
+					scaleX: [1, 0],
+					transformOrigin: "right",
+				}
+			}
+		} else {
+			if (timing === "start") {
+				return {
+					scaleX: 1,
+					scaleY: [0, 1],
+					transformOrigin: "top",
+				}
+			} else {
+				return {
+					scaleX: 1,
+					scaleY: [1, 0],
+					transformOrigin: "bottom",
+				}
+			}
+		}
+	}
+
 	const sequence = async () => {
 		await coverAnimation.start((i) => ({
-			scaleX: [0, 1],
-			transformOrigin: "left",
+			...coverAniDir("start"),
 			transition: {
 				duration: 0.5 - i * 0.1,
 				type: "tween",
@@ -24,8 +56,7 @@ export const CoverAnime: VFC<Props> = (props) => {
 		}))
 		await baseVisible.start({ opacity: [0, 1], transition: { duration: 0 } })
 		await coverAnimation.start((i) => ({
-			scaleX: [1, 0],
-			transformOrigin: "right",
+			...coverAniDir("end"),
 			transition: {
 				duration: 0.5,
 				type: "tween",
@@ -62,7 +93,7 @@ export const CoverAnime: VFC<Props> = (props) => {
 				bgColor={"gray.400"}
 				borderRadius={props.borderRadius ?? "none"}
 				animate={coverAnimation}
-				initial={{ scaleX: 0 }}
+				initial={props.coverOrigin === "left" ? { scaleX: 0 } : { scaleY: 0 }}
 			/>
 			<MBox
 				custom={0}
@@ -76,8 +107,12 @@ export const CoverAnime: VFC<Props> = (props) => {
 				bgColor={"gray.700"}
 				borderRadius={props.borderRadius ?? "none"}
 				animate={coverAnimation}
-				initial={{ scaleX: 0 }}
+				initial={props.coverOrigin === "left" ? { scaleX: 0 } : { scaleY: 0 }}
 			/>
 		</Box>
 	)
+}
+
+CoverAnime.defaultProps = {
+	coverOrigin: "left",
 }
