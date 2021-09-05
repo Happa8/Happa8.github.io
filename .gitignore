@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+src/storyshots/__snapshots__/__diff_output__
+/storybook-static
