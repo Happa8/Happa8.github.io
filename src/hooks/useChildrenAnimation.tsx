@@ -17,8 +17,8 @@ const initialState: AnimeState = {
 }
 
 export const useChildrenAnimation = (sequence: string[]) => {
-	const reducer: React.Reducer<AnimeState, ActionType> = useCallback(
-		(state, action) => {
+	const reducer: React.Reducer<AnimeState, ActionType> = useMemo(
+		() => (state, action) => {
 			switch (action.type) {
 				case "next":
 					if (state.sequenceIndex + 1 < sequence.length) {

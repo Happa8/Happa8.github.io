@@ -5,6 +5,8 @@ import { VFC, ReactNode, useEffect, cloneElement, ReactElement } from "react"
 export type Props = BoxProps & {
 	children: ReactElement
 	coverOrigin?: "top" | "left"
+	coverColors: string[]
+	speed?: number
 } & (
 		| {
 				currentAnimeTarget: string
@@ -60,7 +62,7 @@ export const CoverAnime: VFC<Props> = (props) => {
 		await coverAnimation.start((i) => ({
 			...coverAniDir("start"),
 			transition: {
-				duration: 0.5 - i * 0.1,
+				duration: (props.speed ?? 0.5) - i * 0.1,
 				type: "tween",
 				ease: [0.87, 0, 0.13, 1],
 			},
@@ -70,7 +72,7 @@ export const CoverAnime: VFC<Props> = (props) => {
 			.start((i) => ({
 				...coverAniDir("end"),
 				transition: {
-					duration: 0.5,
+					duration: props.speed ?? 0.5,
 					type: "tween",
 					ease: [0.87, 0, 0.13, 1],
 					delay: i * 0.1,
@@ -80,6 +82,9 @@ export const CoverAnime: VFC<Props> = (props) => {
 				if (props.onNext !== undefined) {
 					props.onNext()
 				}
+				coverAnimation.set(() => ({
+					display: "hidden",
+				}))
 			})
 	}
 
@@ -93,8 +98,18 @@ export const CoverAnime: VFC<Props> = (props) => {
 	})
 
 	return (
-		<Box position="relative">
-			<MBox animate={baseVisible} initial={{ opacity: 0 }}>
+		<Box
+			position="relative"
+			w={props.w ?? "max-content"}
+			h={props.h ?? "max-content"}
+			maxW={props.maxW ?? "max-content"}
+			maxH={props.maxH ?? "max-content"}
+		>
+			<MBox
+				animate={baseVisible}
+				initial={{ opacity: 0 }}
+				position={"relative"}
+			>
 				{cloneElement(props.children, {
 					w: props.w ?? "",
 					h: props.h ?? "",
@@ -103,7 +118,25 @@ export const CoverAnime: VFC<Props> = (props) => {
 					borderRadius: props.borderRadius ?? "none",
 				})}
 			</MBox>
-			<MBox
+			{props.coverColors.map((color, i) => (
+				<MBox
+					custom={i}
+					zIndex={10 - i}
+					position="absolute"
+					top={0}
+					left={0}
+					w={"100%"}
+					h={"100%"}
+					// maxW={props.maxW ?? props.w}
+					// maxH={props.maxH ?? props.h}
+					bgColor={color}
+					borderRadius={props.borderRadius ?? "none"}
+					animate={coverAnimation}
+					initial={props.coverOrigin === "left" ? { scaleX: 0 } : { scaleY: 0 }}
+					key={i}
+				></MBox>
+			))}
+			{/* <MBox
 				custom={1}
 				position="absolute"
 				top={0}
@@ -130,7 +163,7 @@ export const CoverAnime: VFC<Props> = (props) => {
 				borderRadius={props.borderRadius ?? "none"}
 				animate={coverAnimation}
 				initial={props.coverOrigin === "left" ? { scaleX: 0 } : { scaleY: 0 }}
-			/>
+			/> */}
 		</Box>
 	)
 }

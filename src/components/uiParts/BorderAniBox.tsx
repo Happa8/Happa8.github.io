@@ -101,8 +101,8 @@ const BorderAniBox: VFC<Props> = ({
 	})
 
 	return (
-		<Box {...props}>
-			<Box position="relative" w="100%" h="100%">
+		<Box {...props} pointerEvents={"none"}>
+			<Box position="relative" w="100%" h="100%" pointerEvents={"none"}>
 				{/* top */}
 				<MBox
 					w="100%"

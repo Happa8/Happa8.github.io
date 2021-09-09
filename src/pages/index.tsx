@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react"
+import { Box, ButtonGroup, Flex, Heading } from "@chakra-ui/react"
 import type { NextPage } from "next"
 import Head from "next/head"
 import { CoverAnime } from "lib/Anime"
@@ -6,8 +6,9 @@ import { motion } from "framer-motion"
 import BorderAniBox from "components/uiParts/BorderAniBox"
 import React, { useEffect, useState, useReducer } from "react"
 import { useChildrenAnimation } from "hooks/useChildrenAnimation"
+import Button from "components/uiParts/Button"
 
-const sequence: string[] = ["border", "cover"]
+const sequence: string[] = ["border", "cover", "header", "", ""]
 
 const Home: NextPage = () => {
 	const { state, goNextAnime } = useChildrenAnimation(sequence)
@@ -29,24 +30,77 @@ const Home: NextPage = () => {
 				justifyContent="center"
 				alignItems="center"
 			>
-				<Box>
+				<Box position="relative">
 					<CoverAnime
 						w={"95vw"}
 						maxW={600}
-						h={300}
+						h={200}
 						currentAnimeTarget={sequence[state.sequenceIndex]}
 						animeTarget={"cover"}
 						onNext={goNextAnime}
+						coverColors={["black", "gray"]}
+						coverOrigin={"top"}
 					>
-						<Box position="absolute" />
+						<Flex
+							position="absolute"
+							bgColor={"gray.100"}
+							p={8}
+							justifyContent="center"
+							flexDir="column"
+							gridGap={3}
+						>
+							<CoverAnime
+								w={500}
+								maxW={"100%"}
+								h={`60px`}
+								coverColors={["black"]}
+								animeTarget="header"
+								onNext={goNextAnime}
+								currentAnimeTarget={sequence[state.sequenceIndex]}
+							>
+								<Heading
+									as="h1"
+									size="2xl"
+									fontFamily="Raleway"
+									whiteSpace="nowrap"
+								>
+									Happa8 Website
+								</Heading>
+							</CoverAnime>
+							<ButtonGroup>
+								<CoverAnime
+									width={"max-content"}
+									h={"max-content"}
+									coverColors={["black"]}
+									animeTarget="header"
+									onNext={goNextAnime}
+									currentAnimeTarget={sequence[state.sequenceIndex]}
+								>
+									<Button>Who am I?</Button>
+								</CoverAnime>
+								<CoverAnime
+									width={"max-content"}
+									h={"max-content"}
+									coverColors={["black"]}
+									animeTarget="header"
+									onNext={goNextAnime}
+									currentAnimeTarget={sequence[state.sequenceIndex]}
+								>
+									<Button>WORKS</Button>
+								</CoverAnime>
+							</ButtonGroup>
+						</Flex>
 					</CoverAnime>
 					<BorderAniBox
 						w={"95vw"}
 						maxW={600}
-						h={300}
+						h={200}
 						currentAnimeTarget={sequence[state.sequenceIndex]}
 						animeTarget={"border"}
 						onNext={goNextAnime}
+						zIndex={0}
+						position={"absolute"}
+						top={0}
 					></BorderAniBox>
 				</Box>
 			</Flex>

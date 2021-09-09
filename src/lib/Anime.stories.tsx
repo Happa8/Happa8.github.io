@@ -16,6 +16,7 @@ const Template: Story = (args) => (
 		maxW={200}
 		borderRadius={"base"}
 		coverOrigin="top"
+		coverColors={["black", "gray"]}
 	>
 		<Button>Button</Button>
 	</CoverAnime>
