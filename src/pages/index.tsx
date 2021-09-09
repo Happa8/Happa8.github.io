@@ -2,20 +2,13 @@ import { Box, ButtonGroup, Flex, Heading } from "@chakra-ui/react"
 import type { NextPage } from "next"
 import Head from "next/head"
 import { CoverAnime } from "lib/Anime"
-import { motion } from "framer-motion"
 import BorderAniBox from "components/uiParts/BorderAniBox"
 import React, { useEffect, useState, useReducer } from "react"
-import { useChildrenAnimation } from "hooks/useChildrenAnimation"
 import Button from "components/uiParts/Button"
-
-const sequence: string[] = ["border", "cover", "header", "", ""]
+import { useSequence } from "hooks/useSequence"
 
 const Home: NextPage = () => {
-	const { state, goNextAnime } = useChildrenAnimation(sequence)
-
-	useEffect(() => {
-		goNextAnime()
-	}, [goNextAnime])
+	const { next, phase } = useSequence(["border", "cover", "header", "", ""])
 
 	return (
 		<div>
@@ -35,9 +28,8 @@ const Home: NextPage = () => {
 						w={"95vw"}
 						maxW={600}
 						h={200}
-						currentAnimeTarget={sequence[state.sequenceIndex]}
-						animeTarget={"cover"}
-						onNext={goNextAnime}
+						running={phase == "cover"}
+						onEnd={next}
 						coverColors={["black", "gray"]}
 						coverOrigin={"top"}
 					>
@@ -54,9 +46,8 @@ const Home: NextPage = () => {
 								maxW={"100%"}
 								h={`60px`}
 								coverColors={["black"]}
-								animeTarget="header"
-								onNext={goNextAnime}
-								currentAnimeTarget={sequence[state.sequenceIndex]}
+								running={phase === "header"}
+								onEnd={next}
 							>
 								<Heading
 									as="h1"
@@ -72,9 +63,8 @@ const Home: NextPage = () => {
 									width={"max-content"}
 									h={"max-content"}
 									coverColors={["black"]}
-									animeTarget="header"
-									onNext={goNextAnime}
-									currentAnimeTarget={sequence[state.sequenceIndex]}
+									running={phase === "header"}
+									onEnd={next}
 								>
 									<Button>Who am I?</Button>
 								</CoverAnime>
@@ -82,9 +72,8 @@ const Home: NextPage = () => {
 									width={"max-content"}
 									h={"max-content"}
 									coverColors={["black"]}
-									animeTarget="header"
-									onNext={goNextAnime}
-									currentAnimeTarget={sequence[state.sequenceIndex]}
+									running={phase === "header"}
+									onEnd={next}
 								>
 									<Button>WORKS</Button>
 								</CoverAnime>
@@ -95,9 +84,8 @@ const Home: NextPage = () => {
 						w={"95vw"}
 						maxW={600}
 						h={200}
-						currentAnimeTarget={sequence[state.sequenceIndex]}
-						animeTarget={"border"}
-						onNext={goNextAnime}
+						running={phase === "border"}
+						onEnd={next}
 						zIndex={0}
 						position={"absolute"}
 						top={0}

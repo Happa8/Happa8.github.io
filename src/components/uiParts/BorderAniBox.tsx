@@ -1,7 +1,6 @@
-import { ComponentProps, ReactNode, useEffect, VFC } from "react"
+import { ComponentProps, ReactNode, useEffect, VFC, useCallback } from "react"
 import { motion, useAnimation } from "framer-motion"
 import { Box, BoxProps } from "@chakra-ui/layout"
-import { transition } from "@chakra-ui/react"
 
 const MBox = motion<BoxProps>(Box)
 
@@ -11,24 +10,21 @@ export type Props = BoxProps & {
 	children?: ReactNode
 } & (
 		| {
-				currentAnimeTarget: string
-				onNext: () => void
-				animeTarget: string
+				running: boolean
+				onEnd: () => void
 		  }
 		| {
-				currentAnimeTarget?: undefined
-				onNext?: undefined
-				animeTarget?: undefined
+				running?: undefined
+				onEnd?: undefined
 		  }
 	)
 
 const BorderAniBox: VFC<Props> = ({
-	speed,
-	aniBorderWidth,
+	speed = 0.5,
+	aniBorderWidth = 1,
 	children,
-	currentAnimeTarget,
-	onNext,
-	animeTarget,
+	onEnd,
+	running,
 	...props
 }) => {
 	const anime = useAnimation()
@@ -40,65 +36,60 @@ const BorderAniBox: VFC<Props> = ({
 		initial: { scaleX: 0, scaleY: 0 },
 	}
 
-	const sequence = async () => {
-		console.log("start border")
-		await anime
-			.start((i) => {
-				const transformAnime = () => {
-					switch (i) {
-						case 0:
-							return {
-								scaleY: 1,
-								scaleX: [0, 1],
-								transformOrigin: "left",
-							}
-						case 1:
-							return {
-								scaleX: 1,
-								scaleY: [0, 1],
-								transformOrigin: "top",
-							}
-						case 2:
-							return {
-								scaleY: 1,
-								scaleX: [0, 1],
-								transformOrigin: "right",
-							}
-						case 3:
-							return {
-								scaleX: 1,
-								scaleY: [0, 1],
-								transformOrigin: "bottom",
-							}
-					}
+	const sequence = useCallback(async () => {
+		await anime.start((i) => {
+			const transformAnime = () => {
+				switch (i) {
+					case 0:
+						return {
+							scaleY: 1,
+							scaleX: [0, 1],
+							transformOrigin: "left",
+						}
+					case 1:
+						return {
+							scaleX: 1,
+							scaleY: [0, 1],
+							transformOrigin: "top",
+						}
+					case 2:
+						return {
+							scaleY: 1,
+							scaleX: [0, 1],
+							transformOrigin: "right",
+						}
+					case 3:
+						return {
+							scaleX: 1,
+							scaleY: [0, 1],
+							transformOrigin: "bottom",
+						}
 				}
-				return {
-					...transformAnime(),
-					transition: {
-						duration: speed,
-						delay: (speed ?? 0.5) * i,
-						type: "tween",
-						ease: [0.87, 0, 0.13, 1],
-					},
-				}
-			})
-			.then(() => {
-				if (onNext !== undefined) {
-					onNext()
-				}
-				console.log("end border")
-			})
-	}
+			}
+			return {
+				...transformAnime(),
+				transition: {
+					duration: speed,
+					delay: (speed ?? 0.5) * i,
+					type: "tween",
+					ease: [0.87, 0, 0.13, 1],
+				},
+			}
+		})
+	}, [anime, speed])
 
 	useEffect(() => {
-		if (onNext === undefined) {
-			console.log("undefined start trigger")
+		if (onEnd === undefined) {
 			sequence()
-		} else if (animeTarget === currentAnimeTarget) {
-			console.log("trigger border")
+		} else if (running) {
+			console.log("start border!")
 			sequence()
+				.then(onEnd)
+				.then(() => {
+					console.log("end border!")
+				})
 		}
-	})
+	}, [onEnd, running, sequence])
 
 	return (
 		<Box {...props} pointerEvents={"none"}>
@@ -138,11 +129,6 @@ const BorderAniBox: VFC<Props> = ({
 			</Box>
 		</Box>
 	)
-}
-
-BorderAniBox.defaultProps = {
-	speed: 0.5,
-	aniBorderWidth: 1,
 }
 
 export default BorderAniBox
