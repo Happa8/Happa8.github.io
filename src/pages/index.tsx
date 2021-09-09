@@ -6,6 +6,7 @@ import BorderAniBox from "components/uiParts/BorderAniBox"
 import React, { useEffect, useState, useReducer } from "react"
 import Button from "components/uiParts/Button"
 import { useSequence } from "hooks/useSequence"
+import { AiOutlineArrowRight } from "react-icons/ai"
 
 const Home: NextPage = () => {
 	const { next, phase } = useSequence(["border", "cover", "header", "", ""])
@@ -34,6 +35,9 @@ const Home: NextPage = () => {
 						coverOrigin={"top"}
 					>
 						<Flex
+							w={"95vw"}
+							maxW={600}
+							h={200}
 							position="absolute"
 							bgColor={"gray.100"}
 							p={8}
@@ -42,7 +46,7 @@ const Home: NextPage = () => {
 							gridGap={3}
 						>
 							<CoverAnime
-								w={500}
+								w={400}
 								maxW={"100%"}
 								h={`60px`}
 								coverColors={["black"]}
@@ -66,7 +70,7 @@ const Home: NextPage = () => {
 									running={phase === "header"}
 									onEnd={next}
 								>
-									<Button>Who am I?</Button>
+									<Button rightIcon={<AiOutlineArrowRight />}>Who am I?</Button>
 								</CoverAnime>
 								<CoverAnime
 									width={"max-content"}
@@ -75,7 +79,7 @@ const Home: NextPage = () => {
 									running={phase === "header"}
 									onEnd={next}
 								>
-									<Button>WORKS</Button>
+									<Button rightIcon={<AiOutlineArrowRight />}>WORKS</Button>
 								</CoverAnime>
 							</ButtonGroup>
 						</Flex>

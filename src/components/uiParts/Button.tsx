@@ -1,14 +1,14 @@
-import { VFC, useState, ReactNode, useEffect } from "react"
+import { VFC, useState, ReactNode, useEffect, ComponentProps } from "react"
 import { Box, BoxProps, Button as CButton, ButtonProps } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 
-export type Props = ButtonProps & {
+const MButton = motion<ButtonProps>(CButton)
+
+export type Props = ComponentProps<typeof MButton> & {
 	children: ReactNode
 }
 
-const MButton = motion<ButtonProps>(CButton)
-
-const Button: VFC<Props> = (props) => {
+const Button: VFC<Props> = ({ children, ...props }) => {
 	return (
 		<MButton
 			px={10}
@@ -30,8 +30,9 @@ const Button: VFC<Props> = (props) => {
 					duration: 0.01,
 				},
 			}}
+			{...props}
 		>
-			{props.children}
+			{children}
 		</MButton>
 	)
 }

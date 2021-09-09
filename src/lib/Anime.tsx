@@ -116,10 +116,6 @@ export const CoverAnime: VFC<Props> = ({
 				position={"relative"}
 			>
 				{cloneElement(props.children, {
-					w: props.w ?? "",
-					h: props.h ?? "",
-					maxW: props.maxW ?? "",
-					maxH: props.maxH ?? "",
 					borderRadius: props.borderRadius ?? "none",
 				})}
 			</MBox>
