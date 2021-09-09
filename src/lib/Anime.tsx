@@ -1,64 +1,67 @@
 import { Box, BoxProps } from "@chakra-ui/layout"
-import { motion, Transition, useAnimation } from "framer-motion"
-import { VFC, ReactNode, useEffect, cloneElement, ReactElement } from "react"
+import { motion, useAnimation } from "framer-motion"
+import { cloneElement, ReactElement, useCallback, useEffect, VFC } from "react"
 
 export type Props = BoxProps & {
 	children: ReactElement
 	coverOrigin?: "top" | "left"
 } & (
 		| {
-				currentAnimeTarget: string
-				onNext: () => void
-				animeTarget: string
+				running: boolean
+				onEnd: () => void
 		  }
 		| {
-				currentAnimeTarget?: undefined
-				onNext?: undefined
-				animeTarget?: undefined
+				running?: undefined
+				onEnd?: undefined
 		  }
 	)
 
 const MBox = motion<BoxProps>(Box)
 
-export const CoverAnime: VFC<Props> = (props) => {
-	const coverAnimation = useAnimation()
-	const baseVisible = useAnimation()
-
-	const coverAniDir = (timing: "start" | "end") => {
-		if (props.coverOrigin == "left") {
-			if (timing === "start") {
-				return {
-					scaleY: 1,
-					scaleX: [0, 1],
-					transformOrigin: "left",
-				}
-			} else {
-				return {
-					scaleY: 1,
-					scaleX: [1, 0],
-					transformOrigin: "right",
-				}
+const coverAniDir = (origin: "top" | "left", timing: "start" | "end") => {
+	if (origin == "left") {
+		if (timing === "start") {
+			return {
+				scaleY: 1,
+				scaleX: [0, 1],
+				transformOrigin: "left",
 			}
 		} else {
-			if (timing === "start") {
-				return {
-					scaleX: 1,
-					scaleY: [0, 1],
-					transformOrigin: "top",
-				}
-			} else {
-				return {
-					scaleX: 1,
-					scaleY: [1, 0],
-					transformOrigin: "bottom",
-				}
+			return {
+				scaleY: 1,
+				scaleX: [1, 0],
+				transformOrigin: "right",
+			}
+		}
+	} else {
+		if (timing === "start") {
+			return {
+				scaleX: 1,
+				scaleY: [0, 1],
+				transformOrigin: "top",
+			}
+		} else {
+			return {
+				scaleX: 1,
+				scaleY: [1, 0],
+				transformOrigin: "bottom",
 			}
 		}
 	}
+}
 
-	const sequence = async () => {
+export const CoverAnime: VFC<Props> = ({
+	coverOrigin = "left",
+	running,
+	onEnd,
+	...props
+}) => {
+	const coverAnimation = useAnimation()
+	const baseVisible = useAnimation()
+
+	const sequence = useCallback(async () => {
 		await coverAnimation.start((i) => ({
-			...coverAniDir("start"),
+			...coverAniDir(coverOrigin, "start"),
 			transition: {
 				duration: 0.5 - i * 0.1,
 				type: "tween",
@@ -66,31 +69,25 @@ export const CoverAnime: VFC<Props> = (props) => {
 			},
 		}))
 		await baseVisible.start({ opacity: [0, 1], transition: { duration: 0 } })
-		await coverAnimation
-			.start((i) => ({
-				...coverAniDir("end"),
-				transition: {
-					duration: 0.5,
-					type: "tween",
-					ease: [0.87, 0, 0.13, 1],
-					delay: i * 0.1,
-				},
-			}))
-			.then(() => {
-				if (props.onNext !== undefined) {
-					props.onNext()
-				}
-			})
-	}
+		await coverAnimation.start((i) => ({
+			...coverAniDir(coverOrigin, "start"),
+			transition: {
+				duration: 0.5,
+				type: "tween",
+				ease: [0.87, 0, 0.13, 1],
+				delay: i * 0.1,
+			},
+		}))
+	}, [baseVisible, coverAnimation, coverOrigin])
 
 	useEffect(() => {
-		if (props.onNext === undefined) {
+		if (onEnd === undefined) {
 			sequence()
-		} else if (props.animeTarget === props.currentAnimeTarget) {
+		} else if (running) {
 			console.log("trigger border")
-			sequence()
+			sequence().then(onEnd)
 		}
-	})
+	}, [onEnd, running, sequence])
 
 	return (
 		<Box position="relative">
@@ -115,7 +112,7 @@ export const CoverAnime: VFC<Props> = (props) => {
 				bgColor={"gray.400"}
 				borderRadius={props.borderRadius ?? "none"}
 				animate={coverAnimation}
-				initial={props.coverOrigin === "left" ? { scaleX: 0 } : { scaleY: 0 }}
+				initial={coverOrigin === "left" ? { scaleX: 0 } : { scaleY: 0 }}
 			/>
 			<MBox
 				custom={0}
@@ -129,12 +126,8 @@ export const CoverAnime: VFC<Props> = (props) => {
 				bgColor={"gray.700"}
 				borderRadius={props.borderRadius ?? "none"}
 				animate={coverAnimation}
-				initial={props.coverOrigin === "left" ? { scaleX: 0 } : { scaleY: 0 }}
+				initial={coverOrigin === "left" ? { scaleX: 0 } : { scaleY: 0 }}
 			/>
 		</Box>
 	)
-}
-
-CoverAnime.defaultProps = {
-	coverOrigin: "left",
 }

@@ -1,20 +1,12 @@
 import { Box, Flex } from "@chakra-ui/react"
+import BorderAniBox from "components/uiParts/BorderAniBox"
+import { useSequence } from "hooks/useSequence"
+import { CoverAnime } from "lib/Anime"
 import type { NextPage } from "next"
 import Head from "next/head"
-import { CoverAnime } from "lib/Anime"
-import { motion } from "framer-motion"
-import BorderAniBox from "components/uiParts/BorderAniBox"
-import React, { useEffect, useState, useReducer } from "react"
-import { useChildrenAnimation } from "hooks/useChildrenAnimation"
-
-const sequence: string[] = ["border", "cover"]
 
 const Home: NextPage = () => {
-	const { state, goNextAnime } = useChildrenAnimation(sequence)
-
-	useEffect(() => {
-		goNextAnime()
-	}, [goNextAnime])
+	const { next, phase } = useSequence(["border", "cover"])
 
 	return (
 		<div>
@@ -34,9 +26,8 @@ const Home: NextPage = () => {
 						w={"95vw"}
 						maxW={600}
 						h={300}
-						currentAnimeTarget={sequence[state.sequenceIndex]}
-						animeTarget={"cover"}
-						onNext={goNextAnime}
+						running={phase === "cover"}
+						onEnd={next}
 					>
 						<Box position="absolute" />
 					</CoverAnime>
@@ -44,10 +35,9 @@ const Home: NextPage = () => {
 						w={"95vw"}
 						maxW={600}
 						h={300}
-						currentAnimeTarget={sequence[state.sequenceIndex]}
-						animeTarget={"border"}
-						onNext={goNextAnime}
-					></BorderAniBox>
+						running={phase === "cover"}
+						onEnd={next}
+					/>
 				</Box>
 			</Flex>
 		</div>

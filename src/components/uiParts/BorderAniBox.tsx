@@ -1,7 +1,6 @@
-import { ComponentProps, ReactNode, useEffect, VFC } from "react"
-import { motion, useAnimation } from "framer-motion"
 import { Box, BoxProps } from "@chakra-ui/layout"
-import { transition } from "@chakra-ui/react"
+import { motion, useAnimation } from "framer-motion"
+import { ComponentProps, ReactNode, useCallback, useEffect, VFC } from "react"
 
 const MBox = motion<BoxProps>(Box)
 
@@ -11,24 +10,21 @@ export type Props = BoxProps & {
 	children?: ReactNode
 } & (
 		| {
-				currentAnimeTarget: string
-				onNext: () => void
-				animeTarget: string
+				running: boolean
+				onEnd: () => void
 		  }
 		| {
-				currentAnimeTarget?: undefined
-				onNext?: undefined
-				animeTarget?: undefined
+				running?: undefined
+				onEnd?: undefined
 		  }
 	)
 
 const BorderAniBox: VFC<Props> = ({
-	speed,
-	aniBorderWidth,
+	speed = 0.5,
+	aniBorderWidth = 1,
 	children,
-	currentAnimeTarget,
-	onNext,
-	animeTarget,
+	onEnd,
+	running,
 	...props
 }) => {
 	const anime = useAnimation()
@@ -40,10 +36,9 @@ const BorderAniBox: VFC<Props> = ({
 		initial: { scaleX: 0, scaleY: 0 },
 	}
 
-	const sequence = async () => {
-		console.log("start border")
-		await anime
-			.start((i) => {
+	const sequence = useCallback(
+		() =>
+			anime.start((i) => {
 				const transformAnime = () => {
 					switch (i) {
 						case 0:
@@ -81,24 +76,19 @@ const BorderAniBox: VFC<Props> = ({
 						ease: [0.87, 0, 0.13, 1],
 					},
 				}
-			})
-			.then(() => {
-				if (onNext !== undefined) {
-					onNext()
-				}
-				console.log("end border")
-			})
-	}
+			}),
+		[anime, speed]
+	)
 
 	useEffect(() => {
-		if (onNext === undefined) {
+		if (onEnd === undefined) {
 			console.log("undefined start trigger")
 			sequence()
-		} else if (animeTarget === currentAnimeTarget) {
+		} else if (running) {
 			console.log("trigger border")
-			sequence()
+			sequence().then(onEnd)
 		}
-	})
+	}, [onEnd, running, sequence])
 
 	return (
 		<Box {...props}>
@@ -138,11 +128,6 @@ const BorderAniBox: VFC<Props> = ({
 			</Box>
 		</Box>
 	)
-}
-
-BorderAniBox.defaultProps = {
-	speed: 0.5,
-	aniBorderWidth: 1,
 }
 
 export default BorderAniBox
