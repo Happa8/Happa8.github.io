@@ -2,7 +2,7 @@ import { VFC, useState, ReactNode, useEffect } from "react"
 import { Box, BoxProps, Button as CButton, ButtonProps } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 
-type Props = ButtonProps & {
+export type Props = ButtonProps & {
 	children: ReactNode
 }
 

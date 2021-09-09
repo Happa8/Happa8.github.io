@@ -5,7 +5,18 @@ import { VFC, ReactNode, useEffect, cloneElement, ReactElement } from "react"
 export type Props = BoxProps & {
 	children: ReactElement
 	coverOrigin?: "top" | "left"
-}
+} & (
+		| {
+				currentAnimeTarget: string
+				onNext: () => void
+				animeTarget: string
+		  }
+		| {
+				currentAnimeTarget?: undefined
+				onNext?: undefined
+				animeTarget?: undefined
+		  }
+	)
 
 const MBox = motion<BoxProps>(Box)
 
@@ -55,19 +66,30 @@ export const CoverAnime: VFC<Props> = (props) => {
 			},
 		}))
 		await baseVisible.start({ opacity: [0, 1], transition: { duration: 0 } })
-		await coverAnimation.start((i) => ({
-			...coverAniDir("end"),
-			transition: {
-				duration: 0.5,
-				type: "tween",
-				ease: [0.87, 0, 0.13, 1],
-				delay: i * 0.1,
-			},
-		}))
+		await coverAnimation
+			.start((i) => ({
+				...coverAniDir("end"),
+				transition: {
+					duration: 0.5,
+					type: "tween",
+					ease: [0.87, 0, 0.13, 1],
+					delay: i * 0.1,
+				},
+			}))
+			.then(() => {
+				if (props.onNext !== undefined) {
+					props.onNext()
+				}
+			})
 	}
 
 	useEffect(() => {
-		sequence()
+		if (props.onNext === undefined) {
+			sequence()
+		} else if (props.animeTarget === props.currentAnimeTarget) {
+			console.log("trigger border")
+			sequence()
+		}
 	})
 
 	return (
