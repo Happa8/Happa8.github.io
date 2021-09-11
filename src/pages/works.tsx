@@ -12,6 +12,7 @@ import {
 	Divider,
 	Link as CLink,
 } from "@chakra-ui/layout"
+import { Image } from "@chakra-ui/image"
 import { motion } from "framer-motion"
 import Head from "next/head"
 import { CoverAnime } from "lib/Anime"
@@ -32,7 +33,7 @@ import WorksJSON from "data/works.json"
 import WorksItem from "components/pages/works/WorksItem"
 import { Work } from "lib/work"
 import { useEffect, useState } from "react"
-import Image from "next/image"
+// import Image from "next/image"
 import Link from "next/link"
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import Slider from "react-slick"
@@ -212,14 +213,18 @@ const Works: NextPage = () => {
 														position="relative"
 														verticalAlign="bottom"
 														key={item}
+														bgImage={item}
+														bgSize={"contain"}
+														bgRepeat="no-repeat"
+														bgPosition="center"
 													>
-														<Image
+														{/* <Image
 															layout="fill"
 															src={item}
 															alt={currentWork?.title}
-															quality={100}
+															// quality={100}
 															objectFit="contain"
-														/>
+														/> */}
 													</Box>
 												))}
 											</Slider>
