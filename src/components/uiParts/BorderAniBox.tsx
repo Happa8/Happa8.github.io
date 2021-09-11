@@ -96,8 +96,8 @@ const BorderAniBox: VFC<Props> = ({
 		<Box {...props}>
 			<Box
 				position="relative"
-				w={children === undefined ? "100%" : "max-content"}
-				h={children === undefined ? "100%" : "max-content"}
+				w={props.w ?? "max-content"}
+				h={props.h ?? "max-content"}
 			>
 				{/* top */}
 				<MBox

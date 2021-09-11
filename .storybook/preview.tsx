@@ -1,14 +1,21 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import { Story } from "@storybook/react"
 import React from "react"
+import theme from "../src/lib/theme"
+import * as nextImage from "next/image"
 
 const withChakra = (Story: Story) => {
 	return (
-		<ChakraProvider>
+		<ChakraProvider resetCSS theme={theme}>
 			<Story />
 		</ChakraProvider>
 	)
 }
+
+Object.defineProperty(nextImage, "default", {
+	configurable: true,
+	value: (props) => <img {...props} />,
+})
 
 export const decorators = [withChakra]
 

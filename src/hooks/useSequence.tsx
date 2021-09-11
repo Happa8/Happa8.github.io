@@ -117,11 +117,18 @@ export const useSequence = <Phase extends string>(
 		// }
 	}, [options, state.state])
 
+	useEffect(() => {
+		if (state.state == "waiting" && !options.running) {
+			dispatch({ type: "start" })
+		}
+	}, [options, state.state])
+
 	return {
 		phase:
 			state.sequenceIndex !== undefined
 				? sequence[state.sequenceIndex]
 				: undefined,
 		next,
+		state: state,
 	}
 }

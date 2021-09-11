@@ -1,6 +1,7 @@
 import { VFC, useState, ReactNode, useEffect, ComponentProps } from "react"
 import { Box, BoxProps, Button as CButton, ButtonProps } from "@chakra-ui/react"
 import { motion } from "framer-motion"
+import { memo } from "react"
 
 const MButton = motion<ButtonProps>(CButton)
 
@@ -38,4 +39,4 @@ const Button: VFC<Props> = ({ children, ...props }) => {
 	)
 }
 
-export default Button
+export default memo(Button)

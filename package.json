@@ -8,7 +8,7 @@
 		"start": "next start",
 		"lint": "next lint",
 		"test": "jest",
-		"storybook": "start-storybook -p 6006",
+		"storybook": "start-storybook -s ./public -p 6006",
 		"build-storybook": "build-storybook",
 		"storyshots": "jest storyshots/storybook.test.ts",
 		"puppeteer-storyshots": "jest storyshots/puppeteer-storyshots*.test.ts"
@@ -17,11 +17,14 @@
 		"@chakra-ui/react": "^1.6.7",
 		"@emotion/react": "^11",
 		"@emotion/styled": "^11",
+		"@types/react-slick": "^0.23.5",
 		"framer-motion": "^4",
 		"next": "11.1.2",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
-		"react-icons": "^4.2.0"
+		"react-icons": "^4.2.0",
+		"react-slick": "^0.28.1",
+		"slick-carousel": "^1.8.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.4",
