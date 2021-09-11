@@ -56,6 +56,12 @@ const AniCircle: VFC<Props> = ({
 				delay: i * 0.1,
 			},
 		}))
+		await circleAnime.start(() => ({
+			opacity: 0,
+			transition: {
+				duration: 0,
+			},
+		}))
 	}, [circleAnime, speed, baseVisible])
 
 	useEffect(() => {
