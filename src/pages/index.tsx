@@ -1,4 +1,11 @@
-import { Box, BoxProps, ButtonGroup, Flex, Heading } from "@chakra-ui/react"
+import {
+	Box,
+	BoxProps,
+	ButtonGroup,
+	Flex,
+	Heading,
+	HStack,
+} from "@chakra-ui/react"
 import type { NextPage } from "next"
 import Link from "next/link"
 import Head from "next/head"
@@ -29,89 +36,69 @@ const Home: NextPage = () => {
 				alignItems="center"
 			>
 				<Box position="relative">
-					<CoverAnime
-						w={"95vw"}
-						maxW={600}
-						h={200}
-						running={phase == "cover"}
-						onEnd={next}
-						coverColors={["black", "gray"]}
-						coverOrigin={"top"}
-						speed={0.3}
-					>
-						<Flex
-							w={"95vw"}
-							maxW={600}
-							h={200}
-							position="absolute"
-							bgColor={"gray.100"}
-							p={8}
-							justifyContent="center"
-							flexDir="column"
-							gridGap={3}
+					<BorderAniBox running={phase === "border"} onEnd={next} speed={0.3}>
+						<CoverAnime
+							running={phase == "cover"}
+							onEnd={next}
+							coverColors={["black", "gray"]}
+							coverOrigin={"top"}
+							speed={0.3}
 						>
-							<CoverAnime
-								w={400}
-								maxW={"100%"}
-								h={`60px`}
-								coverColors={["black"]}
-								running={phase === "header"}
-								onEnd={next}
-								speed={0.3}
+							<Flex
+								w={"90vw"}
+								maxW={600}
+								bgColor={"gray.100"}
+								p={10}
+								flexDir="column"
+								gridGap={8}
+								flexWrap="wrap"
 							>
-								<Heading
-									as="h1"
-									size="2xl"
-									fontFamily="Raleway"
-									whiteSpace="nowrap"
-								>
-									Happa8 Website
-								</Heading>
-							</CoverAnime>
-							<ButtonGroup>
 								<CoverAnime
-									width={"max-content"}
-									h={"max-content"}
 									coverColors={["black"]}
 									running={phase === "header"}
 									onEnd={next}
 									speed={0.3}
+									maxW={"100%"}
 								>
-									<Link href="/aboutme" passHref>
-										<Button as="a" rightIcon={<AiOutlineArrowRight />}>
-											Who am I ?
-										</Button>
-									</Link>
+									<Heading as="h1" size="2xl" fontFamily="Raleway">
+										Happa8 Website
+									</Heading>
 								</CoverAnime>
-								<CoverAnime
-									width={"max-content"}
-									h={"max-content"}
-									coverColors={["black"]}
-									running={phase === "header"}
-									onEnd={next}
-									speed={0.3}
-								>
-									<Link href="/" passHref>
-										<Button as="a" rightIcon={<AiOutlineArrowRight />}>
-											WORKS
-										</Button>
-									</Link>
-								</CoverAnime>
-							</ButtonGroup>
-						</Flex>
-					</CoverAnime>
-					<BorderAniBox
-						w={"95vw"}
-						maxW={600}
-						h={200}
-						running={phase === "border"}
-						onEnd={next}
-						zIndex={0}
-						position={"absolute"}
-						top={0}
-						speed={0.3}
-						pointerEvents={"none"}
-					></BorderAniBox>
+								<Box display="inline-flex" flexWrap="wrap" gridGap={3}>
+									<CoverAnime
+										width={"max-content"}
+										h={"max-content"}
+										coverColors={["black"]}
+										running={phase === "header"}
+										onEnd={next}
+										speed={0.3}
+										delay={0.05}
+									>
+										<Link href="/aboutme" passHref>
+											<Button as="a" rightIcon={<AiOutlineArrowRight />}>
+												PROFILE
+											</Button>
+										</Link>
+									</CoverAnime>
+									<CoverAnime
+										width={"max-content"}
+										h={"max-content"}
+										coverColors={["black"]}
+										running={phase === "header"}
+										onEnd={next}
+										speed={0.3}
+										delay={0.1}
+									>
+										<Link href="/" passHref>
+											<Button as="a" rightIcon={<AiOutlineArrowRight />}>
+												WORKS
+											</Button>
+										</Link>
+									</CoverAnime>
+								</Box>
+							</Flex>
+						</CoverAnime>
+					</BorderAniBox>
 				</Box>
 			</Flex>
 		</MBox>
