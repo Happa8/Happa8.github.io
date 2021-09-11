@@ -8,10 +8,11 @@ import {
 	HStack,
 	Spacer,
 	Stack,
+	Image,
 } from "@chakra-ui/react"
 import { NextPage } from "next"
 import Link from "next/link"
-import Image from "next/image"
+// import Image from "next/image"
 import Head from "next/head"
 import { motion, useAnimation, useCycle } from "framer-motion"
 import { ReactNode, useEffect } from "react"
@@ -98,7 +99,7 @@ const AboutMe: NextPage = () => {
 									speed={0.3}
 								>
 									<Image
-										layout="fill"
+										// layout="fill"
 										alt={"happa8"}
 										src="/images/happa8.png"
 									/>
