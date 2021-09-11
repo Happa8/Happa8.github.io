@@ -1,5 +1,15 @@
 import { Reducer, useCallback, useEffect, useMemo, useReducer } from "react"
 
+export type AnimeChild =
+	| {
+			running: boolean
+			onEnd: () => void
+	  }
+	| {
+			running?: undefined
+			onEnd?: undefined
+	  }
+
 type State =
 	| {
 			state: "waiting"

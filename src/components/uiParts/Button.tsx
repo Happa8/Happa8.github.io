@@ -18,6 +18,7 @@ const Button: VFC<Props> = ({ children, ...props }) => {
 			borderRadius="none"
 			backgroundColor={"whiteAlpha.900"}
 			_focus={{ boxShadow: "none" }}
+			onClick={() => (document.activeElement as HTMLElement).blur()}
 			_hover={{ bgColor: "gray.800", color: "white", borderColor: "white" }}
 			_active={{
 				bgColor: "gray.800",

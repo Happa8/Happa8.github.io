@@ -34,6 +34,7 @@ const BorderAniBox: VFC<Props> = ({
 		position: "absolute",
 		animate: anime,
 		initial: { scaleX: 0, scaleY: 0 },
+		zIndex: 10,
 	}
 
 	const sequence = useCallback(async () => {
@@ -92,8 +93,12 @@ const BorderAniBox: VFC<Props> = ({
 	}, [onEnd, running, sequence])
 
 	return (
-		<Box {...props} pointerEvents={"none"}>
-			<Box position="relative" w="100%" h="100%" pointerEvents={"none"}>
+		<Box {...props}>
+			<Box
+				position="relative"
+				w={children === undefined ? "100%" : "max-content"}
+				h={children === undefined ? "100%" : "max-content"}
+			>
 				{/* top */}
 				<MBox
 					w="100%"
@@ -126,6 +131,7 @@ const BorderAniBox: VFC<Props> = ({
 					custom={1}
 					{...commonCSS}
 				/>
+				{children}
 			</Box>
 		</Box>
 	)

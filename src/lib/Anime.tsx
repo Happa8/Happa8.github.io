@@ -1,22 +1,15 @@
 import { Box, BoxProps } from "@chakra-ui/layout"
 import { motion, useAnimation } from "framer-motion"
 import { VFC, useEffect, cloneElement, ReactElement, useCallback } from "react"
+import { AnimeChild } from "hooks/useSequence"
 
 export type Props = BoxProps & {
 	children: ReactElement
 	coverOrigin?: "top" | "left"
 	coverColors: string[]
 	speed?: number
-} & (
-		| {
-				running: boolean
-				onEnd: () => void
-		  }
-		| {
-				running?: undefined
-				onEnd?: undefined
-		  }
-	)
+	delay?: number
+} & AnimeChild
 
 const MBox = motion<BoxProps>(Box)
 
@@ -57,6 +50,7 @@ export const CoverAnime: VFC<Props> = ({
 	running,
 	speed,
 	onEnd,
+	delay = 0,
 	...props
 }) => {
 	const coverAnimation = useAnimation()
@@ -66,6 +60,7 @@ export const CoverAnime: VFC<Props> = ({
 		await coverAnimation.start((i) => ({
 			...coverAniDir(coverOrigin, "start"),
 			transition: {
+				delay: delay,
 				duration: (speed ?? 0.5) - i * 0.1,
 				type: "tween",
 				ease: [0.87, 0, 0.13, 1],
@@ -87,7 +82,7 @@ export const CoverAnime: VFC<Props> = ({
 					display: "hidden",
 				}))
 			})
-	}, [baseVisible, coverAnimation, coverOrigin, speed])
+	}, [baseVisible, coverAnimation, coverOrigin, speed, delay])
 
 	useEffect(() => {
 		if (onEnd === undefined) {
