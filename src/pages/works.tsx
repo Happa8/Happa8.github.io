@@ -163,7 +163,7 @@ const Works: NextPage = () => {
 					boxShadow="none"
 					alignItems="center"
 				>
-					<BorderAniBox w="100%" maxW="95vw" speed={0.2}>
+					<BorderAniBox w="100%" maxW="95vw" speed={0.1}>
 						<CoverAnime
 							coverColors={animeColor}
 							coverOrigin="top"

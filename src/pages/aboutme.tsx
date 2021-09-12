@@ -45,7 +45,11 @@ const ProfileData: { icon: ReactNode; title: string; content: string }[] = [
 		title: "Interest",
 		content: "UI Design, Seosory Feedback, NLP",
 	},
-	{ icon: <FaRegPaperPlane />, title: "Contact", content: "xxx [at] xxx.com" },
+	{
+		icon: <FaRegPaperPlane />,
+		title: "Contact",
+		content: "contact [at] happa8.dev",
+	},
 ]
 
 const AboutMe: NextPage = () => {
@@ -74,6 +78,7 @@ const AboutMe: NextPage = () => {
 							running={phase == "boxCover"}
 							onEnd={next}
 							coverOrigin="top"
+							speed={0.3}
 						>
 							<Flex
 								w={"90vw"}
