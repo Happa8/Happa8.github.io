@@ -2,8 +2,8 @@ import { ComponentProps, VFC, useEffect } from "react"
 import { Box, BoxProps, Heading, Text, VStack } from "@chakra-ui/layout"
 import { motion } from "framer-motion"
 import { Work } from "lib/work"
-// import Image from "next/image"
-import { Image } from "@chakra-ui/image"
+import Image from "next/image"
+// import { Image } from "@chakra-ui/image"
 import { CoverAnime } from "lib/Anime"
 import BorderAniBox from "components/uiParts/BorderAniBox"
 import { useSequence } from "hooks/useSequence"
@@ -54,21 +54,25 @@ const WorksItem: VFC<Props> = ({ work, ...props }) => {
 				w={"100%"}
 				bgColor={"gray.200"}
 				_before={{ content: `""`, display: "block", paddingTop: "100%" }}
-				p={5}
+				p={0}
 				display="flex"
 				justifyContent="center"
 				alignItems="center"
 				position="relative"
-				bgImage={work.imgSrc[0]}
-				bgSize={"cover"}
+				top={0}
+				// bgImage={work.imgSrc[0]}
+				// bgSize={"cover"}
+				__css={{ aspectRatio: "1" }}
 			>
-				{/* <Image
-					w="100%"
-					h="100%"
+				<Image
+					// w="100%"
+					// h="100%"
 					src={work.imgSrc[0]}
 					alt={work.title}
-					overflow="hidden"
-				/> */}
+					layout="fill"
+					quality={75}
+					objectFit={"cover"}
+				/>
 			</MBox>
 		</MBox>
 	)

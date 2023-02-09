@@ -12,7 +12,7 @@ import {
 	Divider,
 	Link as CLink,
 } from "@chakra-ui/layout"
-import { Image } from "@chakra-ui/image"
+import Image from "next/image"
 import { motion } from "framer-motion"
 import Head from "next/head"
 import { CoverAnime } from "lib/Anime"
@@ -213,18 +213,18 @@ const Works: NextPage = () => {
 														position="relative"
 														verticalAlign="bottom"
 														key={item}
-														bgImage={item}
-														bgSize={"contain"}
-														bgRepeat="no-repeat"
-														bgPosition="center"
+														// bgImage={item}
+														// bgSize={"contain"}
+														// bgRepeat="no-repeat"
+														// bgPosition="center"
 													>
-														{/* <Image
+														<Image
 															layout="fill"
 															src={item}
 															alt={currentWork?.title}
-															// quality={100}
+															quality={75}
 															objectFit="contain"
-														/> */}
+														/>
 													</Box>
 												))}
 											</Slider>
