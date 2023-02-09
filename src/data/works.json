@@ -1,29 +1,95 @@
 [
 	{
+		"title": "この同人音声が凄い！",
+		"imgSrc": [
+			"/images/konodoujin.jpg"
+		],
+		"date": "2022",
+		"type": "BookDesign",
+		"client": "「この同人音声がすごい！」製作委員会",
+		"description": "同人音声・ASMR評論誌「この同人音声がすごい！」の組版デザイン・編集・執筆を行いました。同人音声のデータ解析についての論考などを掲載しております。",
+		"link": [
+			"https://www.melonbooks.co.jp/detail/detail.php?product_id=1743469"
+		]
+	},
+	{
+		"title": "生物SF",
+		"imgSrc": [
+			"/images/ousf_24.png"
+		],
+		"date": "2022",
+		"type": "BookDesign",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「生物SF」の組版デザイン・編集・執筆を行いました。画像生成AIについての論考などを掲載しております。",
+		"link": [
+			"https://ousf.booth.pm/items/4334842"
+		]
+	},
+	{
+		"title": "拡張SF",
+		"imgSrc": [
+			"/images/ousf_23.jpg"
+		],
+		"date": "2022",
+		"type": "BookDesign",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「拡張SF」の組版デザイン・編集・執筆を行いました。VRについての論考などを掲載しております。",
+		"link": [
+			"https://ousf.booth.pm/items/3887308"
+		]
+	},
+	{
+		"title": "宇宙SF",
+		"imgSrc": [
+			"/images/ousf_22.png"
+		],
+		"date": "2021",
+		"type": "BookDesign",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「宇宙SF」の組版デザイン・編集・執筆を行いました。三体についての論考などを掲載しております。",
+		"link": [
+			"https://ousf.booth.pm/items/3290984"
+		]
+	},
+	{
 		"title": "築抄　第二号",
-		"imgSrc": ["/images/works/chiku2/chiku2.png"],
+		"imgSrc": [
+			"/images/works/chiku2/chiku2.png"
+		],
 		"date": "2020",
 		"type": "BookDesign",
 		"client": "大阪大学コウメ太夫研究会",
 		"description": "大阪大学コウメ太夫研究会の会誌「築抄　第二号」の組版デザイン・編集を行いました",
-		"link": ["https://booth.pm/ja/items/2530414"]
+		"link": [
+			"https://booth.pm/ja/items/2530414"
+		]
 	},
 	{
 		"title": "インD研研究発表会",
-		"imgSrc": ["/images/ind.jpg", "/images/ind_b.jpg", "/images/ind_r.jpg"],
+		"imgSrc": [
+			"/images/ind.jpg",
+			"/images/ind_b.jpg",
+			"/images/ind_r.jpg"
+		],
 		"date": "2021",
 		"type": "GraphicDesign",
 		"client": "インD研",
 		"description": "インD研一周年記念イベント「インD研研究発表会」のWebフライヤーを制作しました。",
-		"link": ["https://twitter.com/IndkenDJ/status/1412777493925273613?s=20"]
+		"link": [
+			"https://twitter.com/IndkenDJ/status/1412777493925273613?s=20"
+		]
 	},
 	{
 		"title": "築抄　創刊号",
-		"imgSrc": ["/images/works/chiku1/chiku1.png"],
+		"imgSrc": [
+			"/images/works/chiku1/chiku1.png"
+		],
 		"date": "2019",
 		"type": "BookDesign",
 		"client": "大阪大学コウメ太夫研究会",
 		"description": "大阪大学コウメ太夫研究会の会誌「築抄」の組版デザイン・編集を行いました",
-		"link": ["https://booth.pm/ja/items/1657764"]
+		"link": [
+			"https://booth.pm/ja/items/1657764"
+		]
 	}
 ]
