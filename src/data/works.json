@@ -1,29 +1,197 @@
 [
 	{
-		"title": "築抄　第二号",
-		"imgSrc": ["/images/works/chiku2/chiku2.png"],
-		"date": "2020",
-		"type": "BookDesign",
+		"title": "この同人音声がすごい！2023",
+		"imgSrc": [
+			"/images/works/konodou/konodou2023.jpg"
+		],
+		"date": "2023",
+		"type": "BookDesign, Writing",
+		"client": "この同人音声がすごい！製作委員会",
+		"description": "同人誌「この同人音声がすごい！2023」の企画・原稿執筆・表紙デザイン・組版デザイン・編集を行いました。",
+		"link": [
+			"https://x.com/konodoujinonsei/status/1734890910968865127"
+		]
+	},
+	{
+		"title": "信仰SF",
+		"imgSrc": [
+			"/images/works/ousf/2023_shinkou.jpg"
+		],
+		"date": "2023",
+		"type": "BookDesign, Writing",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「信仰SF」の原稿執筆・表紙デザイン・組版デザイン・編集を行いました。",
+		"link": [
+			"https://ousf.booth.pm/items/5194288"
+		]
+	},
+	{
+		"title": "映画大好きポンポさんトリビュート",
+		"imgSrc": [
+			"/images/works/others/pompo.jpg"
+		],
+		"date": "2023",
+		"type": "Writing, BookDesign",
+		"client": "映画大好きポンポさんトリビュート",
+		"description": "同人誌「映画大好きポンポさんトリビュート」の原稿執筆・表紙デザインを行いました。",
+		"link": [
+			"https://x.com/pessimstkohan/status/1713854401360838811"
+		]
+	},
+	{
+		"title": "この同人音声が聴きたい！ Vol.1",
+		"imgSrc": [
+			"/images/works/konodou/kikitai1.jpg"
+		],
+		"date": "2023",
+		"type": "BookDesign, Writing",
+		"client": "この同人音声がすごい！製作委員会",
+		"description": "同人誌「この同人音声が聴きたい！Vol.1」の企画・原稿執筆・表紙デザイン・組版デザイン・編集を行いました。",
+		"link": [
+			"https://x.com/konodoujinonsei/status/1682329575353896960"
+		]
+	},
+	{
+		"title": "時間SFクロニクル　廻・刻",
+		"imgSrc": [
+			"/images/works/ousf/2023_jikan.jpg"
+		],
+		"date": "2023",
+		"type": "BookDesign, Writing",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「時間SFクロニクル　廻・刻」の編集長として、原稿執筆・表紙デザイン・組版デザイン・編集を行いました。",
+		"link": [
+			"https://ousf.booth.pm/items/4781257"
+		]
+	},
+	{
+		"title": "この同人音声がすごい！",
+		"imgSrc": [
+			"/images/works/konodou/konodou.jpg"
+		],
+		"date": "2023",
+		"type": "BookDesign, Writing",
+		"client": "この同人音声がすごい！製作委員会",
+		"description": "同人誌「この同人音声がすごい！」の企画・原稿執筆・表紙デザイン・組版デザイン・編集を行いました。",
+		"link": [
+			"https://x.com/konodoujinonsei/status/1604068893030375424"
+		]
+	},
+	{
+		"title": "生物SF",
+		"imgSrc": [
+			"/images/works/ousf/2022_seibutsu.jpg"
+		],
+		"date": "2022",
+		"type": "BookDesign, Writing",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「生物SF」の編集長として、原稿執筆・表紙デザイン・組版デザイン・編集を行いました。",
+		"link": [
+			"https://ousf.booth.pm/items/4334842"
+		]
+	},
+	{
+		"title": "青春ヘラ ver.3",
+		"imgSrc": [
+			"/images/works/others/hera3.jpg"
+		],
+		"date": "2022",
+		"type": "Writing",
+		"client": "大阪大学感傷マゾ研究会",
+		"description": "大阪大学感傷マゾ研究会の会誌「青春ヘラ ver.3 虚構と異常」に文章を寄稿しました。",
+		"link": [
+			"https://booth.pm/ja/items/3925558"
+		]
+	},
+	{
+		"title": "拡張SF",
+		"imgSrc": [
+			"/images/works/ousf/2022_kakucho.jpg"
+		],
+		"date": "2022",
+		"type": "BookDesign, Writing",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「拡張SF」の編集長として、原稿執筆・表紙デザイン・組版デザイン・編集を行いました。",
+		"link": [
+			"https://ousf.booth.pm/items/3887308"
+		]
+	},
+	{
+		"title": "築抄　第三号",
+		"imgSrc": [
+			"/images/works/chiku3.jpg"
+		],
+		"date": "2021",
+		"type": "BookDesign, Writing",
 		"client": "大阪大学コウメ太夫研究会",
-		"description": "大阪大学コウメ太夫研究会の会誌「築抄　第二号」の組版デザイン・編集を行いました",
-		"link": ["https://booth.pm/ja/items/2530414"]
+		"description": "大阪大学コウメ太夫研究会の会誌「築抄　第三号」の組版デザイン・編集を行いました。また、原稿を寄稿しました。",
+		"link": []
 	},
 	{
 		"title": "インD研研究発表会",
-		"imgSrc": ["/images/ind.jpg", "/images/ind_b.jpg", "/images/ind_r.jpg"],
+		"imgSrc": [
+			"/images/ind.jpg",
+			"/images/ind_b.jpg",
+			"/images/ind_r.jpg"
+		],
 		"date": "2021",
 		"type": "GraphicDesign",
 		"client": "インD研",
 		"description": "インD研一周年記念イベント「インD研研究発表会」のWebフライヤーを制作しました。",
-		"link": ["https://twitter.com/IndkenDJ/status/1412777493925273613?s=20"]
+		"link": [
+			"https://twitter.com/IndkenDJ/status/1412777493925273613?s=20"
+		]
+	},
+	{
+		"title": "宇宙SF",
+		"imgSrc": [
+			"/images/works/ousf/2021_uchu.jpg"
+		],
+		"date": "2021",
+		"type": "BookDesign, Writing",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「宇宙SF」の編集長として、原稿執筆・表紙デザイン・組版デザイン・編集を行いました。",
+		"link": [
+			"https://ousf.booth.pm/items/3290984"
+		]
+	},
+	{
+		"title": "築抄　第二号",
+		"imgSrc": [
+			"/images/works/chiku2/chiku2.png"
+		],
+		"date": "2020",
+		"type": "BookDesign",
+		"client": "大阪大学コウメ太夫研究会",
+		"description": "大阪大学コウメ太夫研究会の会誌「築抄　第二号」の組版デザイン・編集を行いました",
+		"link": [
+			"https://booth.pm/ja/items/2530414"
+		]
 	},
 	{
 		"title": "築抄　創刊号",
-		"imgSrc": ["/images/works/chiku1/chiku1.png"],
+		"imgSrc": [
+			"/images/works/chiku1/chiku1.png"
+		],
 		"date": "2019",
 		"type": "BookDesign",
 		"client": "大阪大学コウメ太夫研究会",
 		"description": "大阪大学コウメ太夫研究会の会誌「築抄」の組版デザイン・編集を行いました",
-		"link": ["https://booth.pm/ja/items/1657764"]
+		"link": [
+			"https://booth.pm/ja/items/1657764"
+		]
+	},
+	{
+		"title": "幸福SF",
+		"imgSrc": [
+			"/images/works/ousf/kofuku.jpg"
+		],
+		"date": "2019",
+		"type": "BookDesign, Writing",
+		"client": "大阪大学SF研究会",
+		"description": "大阪大学SF研究会の会誌「幸福SF」の原稿執筆・組版デザイン・編集を行いました。",
+		"link": [
+			"https://ousf.booth.pm/items/1781148"
+		]
 	}
 ]

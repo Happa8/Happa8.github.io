@@ -32,7 +32,11 @@ import { AiOutlineArrowLeft } from "react-icons/ai"
 
 const MBox = motion<BoxProps>(Box)
 
-const ProfileData: { icon: ReactNode; title: string; content: string }[] = [
+const ProfileData: {
+	icon: ReactNode
+	title: string
+	content: string | ReactNode
+}[] = [
 	{ icon: <FaBirthdayCake />, title: "Birth", content: "2000.08.23" },
 	{ icon: <FaUser />, title: "Gender", content: "Male" },
 	{
@@ -43,12 +47,18 @@ const ProfileData: { icon: ReactNode; title: string; content: string }[] = [
 	{
 		icon: <FaSeedling />,
 		title: "Interest",
-		content: "UI Design, Seosory Feedback, NLP",
+		content: "Graphic Design, UI Design, Sensory Feedback, Human Interaction",
 	},
 	{
 		icon: <FaRegPaperPlane />,
 		title: "Contact",
-		content: "contact [at] happa8.dev",
+		content: (
+			<span>
+				{"contact [at] happa8.dev"}
+				<br />
+				{"X(Twitter): @happa_eight"}
+			</span>
+		),
 	},
 ]
 
