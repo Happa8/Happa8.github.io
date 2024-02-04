@@ -88,7 +88,7 @@ const Works: NextPage = () => {
 							gridGap={5}
 							borderRadius={"sm"}
 							w={"90vw"}
-							maxW={600}
+							maxW={1200}
 							h={"max-content"}
 							alignItems={"center"}
 						>
